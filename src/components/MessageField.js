@@ -8,16 +8,18 @@ export const MessageField = ({ messagesArray }) => {
 
   const ref = useRef();
 
-  useEffect(() => ref.current.focus());
+  useEffect(() => ref.current.focus(), [messages]);
 
   useEffect(() => {
     if (messages[messages.length - 1].author === AUTHORS.ME) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setMessages([
           ...messages,
           { text: "something very witty", author: AUTHORS.BOT },
         ]);
       }, 1000);
+
+      return () => clearTimeout(timer);
     }
   }, [messages]);
 
