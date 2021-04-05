@@ -1,12 +1,17 @@
 import React from "react";
 import { AppBar, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-// import { MenuIcon } from "@material-ui/icons";
-
-export const Header = () => {
+export const Header = ({ chatId }) => {
   return (
     <AppBar position="static" color="primary">
-      <Typography variant="h6">App</Typography>
+      <Link to="/" className="headerLink">
+        <Typography variant="h6">App </Typography>
+      </Link>
+      <Link to="/profile" className="headerLink">
+        Profile
+      </Link>
+      {chatId && <span>chat:{chatId}</span>}
     </AppBar>
   );
 };

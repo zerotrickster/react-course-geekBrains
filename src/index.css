@@ -24,3 +24,11 @@ body {
   padding: 20px;
   overflow-y: scroll;
 }
+.chatLink {
+  text-decoration: none;
+  color: darkblue;
+}
+.headerLink {
+  color: #fff;
+  text-decoration: none;
+}

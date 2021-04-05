@@ -1,32 +1,36 @@
 import { Fab, TextField } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { AUTHORS } from "../utils/constants";
 import { Message } from "./Message";
 import SendIcon from "@material-ui/icons/Send";
 
-export const MessageField = ({ messagesArray }) => {
-  const [messages, setMessages] = useState(messagesArray);
+export const MessageField = ({ initialMessages, chatId }) => {
+  const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
 
   useEffect(() => {
     let timer;
+    const lastMessage = messages[chatId]?.[messages[chatId]?.length - 1];
 
-    if (messages[messages.length - 1].author === AUTHORS.ME) {
+    if (lastMessage?.author === AUTHORS.ME) {
       timer = setTimeout(() => {
-        setMessages([
+        setMessages({
           ...messages,
-          {
-            text: "something very witty",
-            author: AUTHORS.BOT,
-            id: messages.length + 1,
-          },
-        ]);
+          [chatId]: [
+            ...messages[chatId],
+            {
+              text: "something very witty",
+              author: AUTHORS.BOT,
+              id: messages[chatId]?.[messages[chatId]?.length + 1],
+            },
+          ],
+        });
       }, 1000);
     }
     return () => clearTimeout(timer);
-  }, [messages]);
+  }, [messages, chatId]);
 
-  const messageList = messages.map((message) => (
+  const messageList = messages[chatId].map((message) => (
     <Message key={message.id} text={message.text} author={message.author} />
   ));
 
@@ -37,10 +41,13 @@ export const MessageField = ({ messagesArray }) => {
   const sendHandler = (event) => {
     event.preventDefault();
     if (input) {
-      setMessages([
+      setMessages({
         ...messages,
-        { text: input, author: AUTHORS.ME, id: messages.length + 1 },
-      ]);
+        [chatId]: [
+          ...messages[chatId],
+          { text: input, author: AUTHORS.ME, id: messages[chatId].length + 1 },
+        ],
+      });
       setInput("");
     }
   };
