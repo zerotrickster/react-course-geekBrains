@@ -7,6 +7,7 @@ import { addChat, deleteChat } from "../redux/chats/actions";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import shortid from "shortid";
 
 export const ChatList = () => {
   const chats = useSelector((state) => state.chats);
@@ -23,7 +24,8 @@ export const ChatList = () => {
     if (input) {
       const newChat = {
         name: input,
-        id: Object.keys(chats).length + 1,
+        // id: Object.keys(chats).length + 1,
+        id: shortid.generate(),
         active: false,
       };
 
