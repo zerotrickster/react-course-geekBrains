@@ -1,10 +1,10 @@
 import { Fab, TextField } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import SendIcon from "@material-ui/icons/Send";
 import { AUTHORS } from "../utils/constants";
 import { Message } from "./Message";
-import { addMessage } from "../redux/actions";
-import SendIcon from "@material-ui/icons/Send";
+import { addMessageWithBot } from "../redux/messages/actions";
 
 export const MessageField = ({ chatId }) => {
   const dispatch = useDispatch();
@@ -21,33 +21,15 @@ export const MessageField = ({ chatId }) => {
       const newMessage = {
         text: input,
         author: AUTHORS.ME,
-        id: messages[chatId].length + 1,
+        id: messages[chatId]?.length ? messages[chatId].length + 1 : 1,
         chatId,
       };
 
-      dispatch(addMessage(newMessage));
+      dispatch(addMessageWithBot(newMessage));
 
       setInput("");
     }
   };
-
-  useEffect(() => {
-    let timer;
-    const lastMessage = messages[chatId]?.[messages[chatId]?.length - 1];
-
-    if (lastMessage?.author === AUTHORS.ME) {
-      timer = setTimeout(() => {
-        const botMessage = {
-          text: "something very witty",
-          author: AUTHORS.BOT,
-          id: messages[chatId].length + 1,
-          chatId,
-        };
-        dispatch(addMessage(botMessage));
-      }, 1000);
-    }
-    return () => clearTimeout(timer);
-  }, [messages, chatId, dispatch]);
 
   return (
     <>
@@ -57,6 +39,8 @@ export const MessageField = ({ chatId }) => {
             key={message.id}
             text={message.text}
             author={message.author}
+            messId={message.id}
+            chatId={chatId}
           />
         ))}
       </div>

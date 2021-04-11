@@ -1,0 +1,4 @@
+export const ADD_CHAT = "CHAT/ADD_CHAT";
+export const ACTIVE_CHAT = "CHAT/ACTIVE_CHAT";
+export const INACTIVE_CHAT = "CHAT/INACTIVE_CHAT";
+export const DELETE_CHAT = "CHAT/DELETE_CHAT";

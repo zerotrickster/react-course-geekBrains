@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import App from "../App";
 import { Profile } from "../pages/profile";
 
@@ -12,6 +12,7 @@ export const Router = () => {
         <Route exact path="/chat/:chatId">
           <App />
         </Route>
+        <Redirect exact to="/" />
       </Switch>
     </BrowserRouter>
   );
