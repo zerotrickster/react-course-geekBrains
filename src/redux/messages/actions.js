@@ -1,6 +1,7 @@
 import { AUTHORS } from "../../utils/constants";
 import { ADD_MESSAGE, DELETE_MESSAGE } from "./types";
 import { activeChat, inactiveChat } from "../chats/actions";
+import { v4 as uuidv4 } from "uuid";
 
 export function addMessage(message) {
   return {
@@ -14,7 +15,8 @@ export function addMessageWithBot(message) {
     const botMessage = {
       text: "something very witty",
       author: AUTHORS.BOT,
-      id: message.id + 1,
+      // id: message.id + 1,
+      id: uuidv4(),
       chatId: message.chatId,
     };
     if (message.author === AUTHORS.ME) {

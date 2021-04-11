@@ -5,6 +5,7 @@ import SendIcon from "@material-ui/icons/Send";
 import { AUTHORS } from "../utils/constants";
 import { Message } from "./Message";
 import { addMessageWithBot } from "../redux/messages/actions";
+import { v4 as uuidv4 } from "uuid";
 
 export const MessageField = ({ chatId }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ export const MessageField = ({ chatId }) => {
       const newMessage = {
         text: input,
         author: AUTHORS.ME,
-        id: messages[chatId]?.length ? messages[chatId].length + 1 : 1,
+        // id: messages[chatId]?.length ? messages[chatId].length + 1 : 1,
+        id: uuidv4(),
         chatId,
       };
 
