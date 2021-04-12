@@ -24,23 +24,20 @@ export const ChatList = () => {
     if (input) {
       const newChat = {
         name: input,
-        // id: Object.keys(chats).length + 1,
         id: shortid.generate(),
         active: false,
       };
 
       dispatch(addChat(newChat));
-      history.push(`/chat/${newChat.id}`);
+      history.push(`/chat/${newChat.id}/`);
 
       setInput("");
     }
   };
 
   const deleteChatHandler = (id) => {
-    history.push("/profile");
+    // history.push("/profile");
     dispatch(deleteChat(id));
-
-    console.log(history);
   };
 
   return (
@@ -53,9 +50,6 @@ export const ChatList = () => {
             {chat.active && <FeedbackIcon />}
             <IconButton
               aria-label="delete"
-              // onClick={() => {
-              //   dispatch(deleteChat(chat.id));
-              // }}
               onClick={() => {
                 deleteChatHandler(chat.id);
               }}

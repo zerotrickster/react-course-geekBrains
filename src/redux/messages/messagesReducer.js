@@ -32,7 +32,7 @@ export const messagesReducer = (state = initialState, action) => {
     case DELETE_MESSAGE:
       return {
         ...state,
-        [+action.payload.chatId]: state[action.payload.chatId].filter(
+        [action.payload.chatId]: state[action.payload.chatId].filter(
           (item) => item.id !== action.payload.messId
         ),
       };

@@ -12,7 +12,6 @@ export const Message = ({ text, author, messId, chatId }) => {
       style={{ alignSelf: author === AUTHORS.BOT ? "flex-start" : "flex-end" }}
     >
       <small>{author}:</small>
-      <span>id{messId}</span>
       {text}
 
       <IconButton
