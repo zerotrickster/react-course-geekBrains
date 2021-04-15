@@ -9,7 +9,7 @@ function App() {
   const { chatId } = useParams();
   const chats = useSelector((state) => state.chats);
   return (
-    <div className="container">
+    <>
       <Header chatId={chatId} />
       <Grid container spacing={0}>
         <Grid container item xs={3}>
@@ -21,7 +21,7 @@ function App() {
           </Grid>
         )}
       </Grid>
-    </div>
+    </>
   );
 }
 

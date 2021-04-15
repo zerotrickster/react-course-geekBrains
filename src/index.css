@@ -2,6 +2,10 @@ body {
   margin: 0;
   padding: 0;
 }
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
 .message {
   background-color: lightblue;
   padding: 5px 15px;
@@ -35,4 +39,5 @@ body {
 .headerLink {
   color: #fff;
   text-decoration: none;
+  margin: 1rem;
 }
