@@ -5,16 +5,17 @@ import { useSelector } from "react-redux";
 
 export const Header = ({ chatId }) => {
   const name = useSelector((state) => state.profile);
+  const chats = useSelector((state) => state.chats);
 
   return (
     <AppBar position="static" color="primary">
       <Link to="/" className="headerLink">
-        <Typography variant="h6">Hello, {name} </Typography>
+        <Typography variant="h6">App </Typography>
       </Link>
       <Link to="/profile" className="headerLink">
-        Profile
+        {name}
       </Link>
-      {chatId && <span>chat:{chatId}</span>}
+      {chatId && <span>{chats[chatId]?.name}</span>}
     </AppBar>
   );
 };
