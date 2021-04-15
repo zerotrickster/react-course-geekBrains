@@ -8,8 +8,8 @@ export const Message = ({ text, author, messId, chatId }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className="message"
-      style={{ alignSelf: author === AUTHORS.BOT ? "flex-start" : "flex-end" }}
+      className={author === AUTHORS.BOT ? "message bot" : "message"}
+      // style={{ alignSelf: author === AUTHORS.BOT ? "flex-start" : "flex-end" }}
     >
       <small>{author}:</small>
       {text}
