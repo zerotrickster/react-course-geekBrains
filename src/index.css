@@ -2,12 +2,20 @@ body {
   margin: 0;
   padding: 0;
 }
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
 .message {
   background-color: lightblue;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 18px;
   margin: 5px;
+  align-self: flex-end;
+}
+.bot {
+  align-self: flex-start;
 }
 
 .message small {
@@ -31,4 +39,5 @@ body {
 .headerLink {
   color: #fff;
   text-decoration: none;
+  margin: 1rem;
 }

@@ -7,10 +7,7 @@ import { useDispatch } from "react-redux";
 export const Message = ({ text, author, messId, chatId }) => {
   const dispatch = useDispatch();
   return (
-    <div
-      className="message"
-      style={{ alignSelf: author === AUTHORS.BOT ? "flex-start" : "flex-end" }}
-    >
+    <div className={author === AUTHORS.BOT ? "message bot" : "message"}>
       <small>{author}:</small>
       {text}
 

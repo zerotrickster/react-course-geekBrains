@@ -1,0 +1,3 @@
+export const SHOW_LOADER = "POSTS/SHOW_LOADER";
+export const FETCH_POSTS = "POSTS/FETCH_POSTS";
+export const FETCH_ERROR = "POSTS/FETCH_ERROR";
